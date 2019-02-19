@@ -1,4 +1,108 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      .mySlides {
+        display: none;
+      }
+
+      .slideshow-container {
+        max-width: 100%;
+        position: relative;
+        margin: auto;
+      }
+
+      #text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+      }
+
+      .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.5s ease;
+      }
+
+      .active {
+        background-color: grey;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="slideshow-container">
+      <div id="text"><h1>Comfort that comes naturally</h1></div>
+
+      <div class="mySlides ">
+        <img src="./images/pic1.png" style="width:100%" />
+      </div>
+
+      <div class="mySlides ">
+        <img src="./images/pic2.png" style="width:100%" />
+      </div>
+
+      <div class="mySlides ">
+        <img src="./images/pic3.png" style="width:100%" />
+      </div>
+
+      <div style="text-align:center">
+        <span class="dot" onclick="Slide(1)"></span>
+        <span class="dot" onclick="Slide(2)"></span>
+        <span class="dot" onclick="Slide(3)"></span>
+      </div>
+    </div>
+
+    <script>
+      var slideIndex = 0;
+      showSlides();
+
+      function Slide(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[n - 1].style.display = "block";
+        dots[n - 1].className += " active";
+      }
+
+      function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 5000);
+      }
+    </script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -15,24 +119,6 @@
     />
 
     <link rel="stylesheet" href="app.css" />
-
-    <!-- <script>
-      var images = [
-        "./images/pic1.png",
-        "./images/pic2.png",
-        "./images/pic3.png"
-      ];
-
-      var i = 0;
-      setInterval(function() {
-        var imageHead = document.getElementById("image-head");
-        imageHead.style.backgroundImage = "url(" + images[i] + ")";
-        i = i + 1;
-        if (i == images.length) {
-          i = 0;
-        }
-      }, 1000);
-    </script> -->
   </head>
 
   <body>
@@ -83,4 +169,4 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html>
+</html> -->
